@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="PSK Tracks — multitracks y herramientas para músicos y ministerios de alabanza.">
+  <title>PSK Tracks — Tu sonido, a otro nivel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080b12;--panel:#10151f;--panel2:#151c28;--line:rgba(255,255,255,.09);--text:#f5f7fb;--muted:#9aa4b4;--accent:#fff;--radius:18px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif}
+    button,input{font:inherit} button{cursor:pointer} a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(8,11,18,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand img{display:block;width:150px;height:48px;object-fit:contain}
+    .links{display:flex;gap:30px;color:#c2c9d4;font-size:14px}.links a:hover{color:#fff}
+    .navright{display:flex;align-items:center;gap:12px}
+    .iconbtn,.menuBtn{border:1px solid var(--line);background:transparent;color:#fff;border-radius:12px;padding:11px 14px}
+    .cartCount{display:inline-grid;place-items:center;background:#fff;color:#080b12;border-radius:50%;font-size:11px;font-weight:800;width:19px;height:19px;margin-left:5px}
+    .hero{padding:88px 0 72px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:54px}
+    .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#b9c1cd;font-weight:700;display:flex;align-items:center;gap:10px}
+    .eyebrow:before{content:"";width:26px;height:1px;background:#fff}
+    h1,h2,h3,p{margin-top:0} h1{font:800 clamp(42px,6vw,72px)/1.02 Manrope,sans-serif;letter-spacing:-.055em;margin:20px 0}
+    h1 span{color:#8d98a9} .lead{color:#aab3c1;font-size:17px;line-height:1.75;max-width:530px}
+    .actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+    .btn{border:1px solid #fff;border-radius:12px;padding:14px 20px;font-weight:700;font-size:14px;transition:.2s}
+    .btn.primary{background:#fff;color:#080b12}.btn.primary:hover{background:#dfe4eb;transform:translateY(-2px)}
+    .btn.ghost{background:transparent;color:#fff;border-color:var(--line)}.btn.ghost:hover{border-color:#fff}
+    .heroVisual{position:relative;min-height:390px;border:1px solid var(--line);border-radius:26px;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#333d4d 0%,#171e2a 35%,#0c111b 72%)}
+    .heroVisual:before,.heroVisual:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.13);border-radius:50%;width:360px;height:360px;left:50%;top:50%;transform:translate(-50%,-50%)}
+    .heroVisual:after{width:470px;height:470px;border-color:rgba(255,255,255,.07)}
+    .wave{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:7px;opacity:.88}
+    .wave i{display:block;width:7px;border-radius:8px;background:linear-gradient(#fff,#8793a5);height:var(--h);box-shadow:0 0 24px rgba(255,255,255,.16)}
+    .visualLabel{position:absolute;bottom:24px;left:25px;right:25px;display:flex;justify-content:space-between;color:#c6ced9;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+    .stats{display:flex;gap:34px;margin-top:42px}.stat strong{display:block;font:700 22px Manrope}.stat small{color:#8994a5;font-size:11px}
+    .section{padding:54px 0 76px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
+    .sectionHead h2{font:700 30px Manrope;letter-spacing:-.04em;margin:9px 0 0}.sectionHead p{color:var(--muted);margin:0;font-size:13px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter{border:1px solid var(--line);background:transparent;color:#b8c1ce;padding:9px 14px;border-radius:99px;font-size:12px}.filter.active,.filter:hover{background:#fff;color:#080b12;border-color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .product{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s}.product:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.25)}
+    .cover{height:190px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#283344,#111722)}
+    .cover:before{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+    .cover:after{content:"";position:absolute;width:160px;height:160px;border:1px solid rgba(255,255,255,.15);border-radius:50%}
+    .cover .coverText{position:relative;z-index:1;font:800 28px Manrope;letter-spacing:-.06em;text-align:center}
+    .cover .coverSub{display:block;font:600 9px "DM Sans";letter-spacing:.25em;margin-top:8px;color:#c3cad4}
+    .cover.alt1{background:linear-gradient(135deg,#343b43,#131923)}.cover.alt2{background:linear-gradient(135deg,#283c43,#111922)}.cover.alt3{background:linear-gradient(135deg,#3b3541,#17151d)}
+    .cover.alt4{background:linear-gradient(135deg,#3c3c37,#181a19)}.cover.alt5{background:linear-gradient(135deg,#30364a,#151923)}
+    .productBody{padding:18px}.tag{color:#9da8b8;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
+    .product h3{font:700 17px Manrope;margin:8px 0 5px}.desc{color:#929eaf;font-size:12px;line-height:1.6;min-height:38px}
+    .productBottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px}.price{font:700 17px Manrope}
+    .add{border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;border-radius:10px;padding:10px 13px;font-size:12px;font-weight:700}.add:hover{background:#fff;color:#080b12}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{padding:23px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#111722,#0b0f17)}.feature .num{color:#7f8a9b;font-size:11px;letter-spacing:.15em}.feature h3{font:700 16px Manrope;margin:18px 0 8px}.feature p{color:#96a1b1;font-size:12px;line-height:1.7;margin:0}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:#7f8a9b;font-size:12px}.footerInner{display:flex;justify-content:space-between;align-items:center;gap:20px}.footerLogo{width:105px;opacity:.9}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:40;opacity:0;pointer-events:none;transition:.25s}.overlay.open{opacity:1;pointer-events:auto}
+    .drawer{position:fixed;z-index:41;right:0;top:0;height:100%;width:min(440px,100%);background:#0e131c;border-left:1px solid var(--line);transform:translateX(100%);transition:.28s;padding:25px;display:flex;flex-direction:column}
+    .drawer.open{transform:translateX(0)}.drawerHead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.drawerHead h2{font:700 22px Manrope;margin:0}
+    .close{border:1px solid var(--line);background:transparent;color:#fff;border-radius:10px;width:38px;height:38px;font-size:20px}
+    .cartItems{overflow:auto;flex:1;padding:15px 0}.cartItem{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.cartItem strong{font-size:13px}.cartItem small{display:block;color:#8f9aaa;margin-top:5px}.remove{background:none;border:0;color:#9ca7b7;text-decoration:underline;font-size:11px}
+    .cartFoot{border-top:1px solid var(--line);padding-top:18px}.total{display:flex;justify-content:space-between;font-weight:700;margin-bottom:15px}.checkout{width:100%;padding:15px;border:0;border-radius:12px;background:#fff;color:#080b12;font-weight:800}.note{font-size:11px;color:#8994a5;line-height:1.6;margin:12px 0 0}
+    .empty{color:#8e99a9;text-align:center;padding:55px 10px;font-size:14px}
+    .toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#fff;color:#080b12;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:700;z-index:60;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;padding:58px 0 40px;gap:30px}.heroVisual{min-height:280px}.grid{grid-template-columns:repeat(2,1fr)}.links{display:none}.features{grid-template-columns:1fr}.stats{gap:22px}}
+    @media(max-width:520px){.wrap{width:min(100% - 28px,1160px)}.nav{height:66px}.brand img{width:120px}.hero{padding-top:45px}h1{font-size:45px}.lead{font-size:15px}.heroVisual{min-height:235px}.wave{gap:4px}.wave i{width:5px}.grid{grid-template-columns:1fr}.cover{height:180px}.sectionHead{align-items:start;flex-direction:column}.stats{margin-top:30px}.footerInner{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><img src="assets/psk-logo.png" alt="PSK Tracks"></a>
+    <nav class="links"><a href="#inicio">Inicio</a><a href="#catalogo">Multitracks</a><a href="#beneficios">La plataforma</a></nav>
+    <div class="navright">
+      <button class="iconbtn" id="openCart" aria-label="Abrir carrito">Carrito <span class="cartCount" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero" id="inicio">
+    <div>
+      <div class="eyebrow">Professional multitracks</div>
+      <h1>Tu sonido.<br><span>A otro nivel.</span></h1>
+      <p class="lead">Multitracks y herramientas musicales pensadas para músicos, bandas y ministerios de alabanza. Prepara cada presentación con confianza.</p>
+      <div class="actions"><a class="btn primary" href="#catalogo">Explorar catálogo</a><a class="btn ghost" href="#beneficios">Conocer PSK Tracks</a></div>
+      <div class="stats"><div class="stat"><strong>WAV</strong><small>Audio de calidad</small></div><div class="stat"><strong>STEMS</strong><small>Pistas individuales</small></div><div class="stat"><strong>CLICK</strong><small>Precisión en vivo</small></div></div>
+    </div>
+    <div class="heroVisual" aria-label="Visual abstracto de ondas de audio">
+      <div class="wave" id="wave"></div>
+      <div class="visualLabel"><span>PSK Audio System</span><span>01 / 04</span></div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="catalogo">
+    <div class="sectionHead"><div><div class="eyebrow">Explora la colección</div><h2>Catálogo destacado</h2></div><p>Encuentra las pistas para tu próximo servicio.</p></div>
+    <div class="filters" id="filters">
+      <button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Worship">Worship</button><button class="filter" data-filter="Pop">Pop</button><button class="filter" data-filter="Álbumes">Álbumes</button>
+    </div>
+    <div class="grid" id="products"></div>
+  </section>
+
+  <section class="wrap section" id="beneficios">
+    <div class="sectionHead"><div><div class="eyebrow">Diseñado para servir</div><h2>Todo lo que necesitas.</h2></div></div>
+    <div class="features">
+      <article class="feature"><div class="num">01 / AUDIO</div><h3>Pistas organizadas</h3><p>Stems separados para que puedas adaptar la mezcla a las necesidades de tu banda.</p></article>
+      <article class="feature"><div class="num">02 / EN VIVO</div><h3>Preparado para escenario</h3><p>Click y guía para mantener a todo el equipo sincronizado durante la presentación.</p></article>
+      <article class="feature"><div class="num">03 / DIGITAL</div><h3>Acceso sencillo</h3><p>Una experiencia de compra clara y acceso a tus archivos después de confirmar el pago.</p></article>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap footerInner"><img class="footerLogo" src="assets/psk-logo.png" alt="PSK Tracks"><span>© <span id="year"></span> PSK Tracks. Todos los derechos reservados.</span><span>Hecho para la música en vivo.</span></div></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Carrito de compras">
+  <div class="drawerHead"><h2>Tu carrito</h2><button class="close" id="closeCart" aria-label="Cerrar">×</button></div>
+  <div class="cartItems" id="cartItems"></div>
+  <div class="cartFoot"><div class="total"><span>Total</span><span id="cartTotal">$0.00 MXN</span></div><button class="checkout" id="checkout">Continuar al pago</button><p class="note">Versión inicial de demostración: el carrito funciona localmente en este dispositivo. Los pagos reales y las descargas automáticas se conectarán en una siguiente etapa.</p></div>
+</aside>
+<div class="toast" id="toast">Añadido al carrito</div>
+
+<script>
+const products = [
+  {id:1,title:"Sesión de adoración 01",artist:"Colección Worship",category:"Worship",price:99,desc:"Multitrack de demostración · WAV · Click · Guía",cover:""},
+  {id:2,title:"Praise Collection",artist:"Colección Worship",category:"Worship",price:129,desc:"Pistas para una alabanza dinámica y enérgica",cover:"alt1"},
+  {id:3,title:"Acoustic Worship",artist:"Colección Worship",category:"Worship",price:89,desc:"Arreglos acústicos y pistas individuales",cover:"alt2"},
+  {id:4,title:"Pop Session 01",artist:"Colección Pop",category:"Pop",price:99,desc:"Producción pop con stems organizados",cover:"alt3"},
+  {id:5,title:"Live Essentials",artist:"Paquete especial",category:"Álbumes",price:249,desc:"Colección de ejemplo con varias sesiones",cover:"alt4"},
+  {id:6,title:"Modern Worship Pack",artist:"Paquete especial",category:"Álbumes",price:299,desc:"Paquete de demostración para banda completa",cover:"alt5"}
+];
+let cart = JSON.parse(localStorage.getItem("psk-cart") || "[]");
+let activeFilter = "Todos";
+const money = n => new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN"}).format(n);
+function renderProducts(){
+  const list = products.filter(p=>activeFilter==="Todos"||p.category===activeFilter);
+  document.getElementById("products").innerHTML = list.map(p=>`
+    <article class="product">
+      <div class="cover ${p.cover}"><div class="coverText">PSK<span style="color:#aab4c2">.</span><span class="coverSub">${p.category.toUpperCase()} COLLECTION</span></div></div>
+      <div class="productBody"><div class="tag">${p.artist}</div><h3>${p.title}</h3><p class="desc">${p.desc}</p>
+      <div class="productBottom"><span class="price">${money(p.price)}</span><button class="add" onclick="addToCart(${p.id})">Añadir +</button></div></div>
+    </article>`).join("");
+}
+function saveCart(){localStorage.setItem("psk-cart",JSON.stringify(cart));renderCart()}
+function addToCart(id){if(!cart.includes(id)){cart.push(id);saveCart();showToast("Añadido al carrito")}else{showToast("Este producto ya está en tu carrito")}}
+function removeFromCart(id){cart=cart.filter(x=>x!==id);saveCart()}
+function renderCart(){
+  const items=products.filter(p=>cart.includes(p.id));
+  document.getElementById("cartCount").textContent=items.length;
+  document.getElementById("cartItems").innerHTML=items.length?items.map(p=>`<div class="cartItem"><div><strong>${p.title}</strong><small>${p.category}</small></div><div style="text-align:right"><strong>${money(p.price)}</strong><br><button class="remove" onclick="removeFromCart(${p.id})">Quitar</button></div></div>`).join(""):'<div class="empty">Tu carrito está vacío.<br><br>Explora el catálogo y agrega tus primeros multitracks.</div>';
+  document.getElementById("cartTotal").textContent=money(items.reduce((s,p)=>s+p.price,0));
+}
+function openCart(){document.getElementById("drawer").classList.add("open");document.getElementById("overlay").classList.add("open")}
+function closeCart(){document.getElementById("drawer").classList.remove("open");document.getElementById("overlay").classList.remove("open")}
+function showToast(t){const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1800)}
+document.getElementById("openCart").onclick=openCart;document.getElementById("closeCart").onclick=closeCart;document.getElementById("overlay").onclick=closeCart;
+document.getElementById("checkout").onclick=()=>showToast("El pago se habilitará en la siguiente etapa.");
+document.getElementById("filters").addEventListener("click",e=>{if(e.target.matches("[data-filter]")){activeFilter=e.target.dataset.filter;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===e.target));renderProducts()}});
+const heights=[22,38,54,34,76,94,62,42,86,58,32,70,48,98,64,36,80,52,28,68,44,88,58,34,74,48,26];
+document.getElementById("wave").innerHTML=heights.map(h=>`<i style="--h:${h}%"></i>`).join("");
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProducts();renderCart();
+</script>
+</body>
+</html>
